@@ -27,12 +27,8 @@ int* findEmpty(int board[9][9] ) {
 int isValid(int board[9][9] , int guess, int row, int col) {
 
     // Condition 1 - There can only be 1 copy of each number in 1 row
-    int rowVals[9];
     for (int i = 0; i < 9; i++) {
-        rowVals[i] = board[row][i];
-    } 
-    for (int i = 0; i < 9; i++) {
-        if (guess == rowVals[i]) {
+        if (guess == board[row][i]) {
             return 0;
         }
     }
@@ -119,9 +115,11 @@ int main(int argc, char **argv) {
         {0,6,4,0,0,0,0,1,9},
         {1,0,2,7,0,0,6,0,5}
     };
+
     printf("Original board:\n");
     showBoard(board);
     int* coor = findEmpty(board);
+
     if (bruteSolve(board)) {
         printf("Solved board:\n");
         showBoard(board);
